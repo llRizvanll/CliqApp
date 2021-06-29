@@ -9,6 +9,8 @@ export const brand_btm_menu = require('../assets/icons/brand_icon.png');
 export const cat_btm_menu = require('../assets/icons/cat_icon.png');
 export const account_btm_menu = require('../assets/icons/account_icon.png');
 export const bag_btm_menu = require('../assets/icons/bag_icon.png');
+export const launcher_image = require('../assets/images/splashscreen.jpg');
+export const launcher_icon = require('../assets/icons/ic_launcher.png');
 
 export default {
   menu,
@@ -22,4 +24,6 @@ export default {
   cat_btm_menu,
   account_btm_menu,
   bag_btm_menu,
+  launcher_image,
+  launcher_icon
 };

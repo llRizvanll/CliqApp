@@ -22,6 +22,7 @@ import Product from './screens/Detail';
 import Category from './screens/Categories';
 import ProductList from './screens/ProductList';
 import Cart from './screens/Cart';
+import Splashscreen from './screens/Splash/SplashScreen';
 
 const theme = {
   ...DefaultTheme,
@@ -127,7 +128,7 @@ function stackProductListScreen({navigation}) {
 
 function stackScreens({navigation}) {
   return (
-    <Stack.Navigator initialRouteName={'Home'}>
+    <Stack.Navigator initialRouteName={'Splashscreen'}>
       <Stack.Screen
         name="Home"
         component={Home}
@@ -170,7 +171,13 @@ function stackScreens({navigation}) {
           ),
         }}
       />
-
+      <Stack.Screen
+        name="Splashscreen"
+        component={Splashscreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen name="Category" component={Category} />
       <Stack.Screen name="ProductList" component={ProductList} />
       <Stack.Screen name="Product" component={Product} />
@@ -193,6 +200,7 @@ const App = () => {
           options={{drawerLabel: 'Home'}}
           component={stackScreens}
         />
+
         <Drawer.Screen
           name="FirstSideMenuItem"
           options={{drawerLabel: 'Products'}}
