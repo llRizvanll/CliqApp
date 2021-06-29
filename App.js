@@ -23,6 +23,7 @@ import Category from './screens/Categories';
 import ProductList from './screens/ProductList';
 import Cart from './screens/Cart';
 import Splashscreen from './screens/Splash/SplashScreen';
+import Address from './screens/Forms/Address';
 
 const theme = {
   ...DefaultTheme,
@@ -83,6 +84,42 @@ function stackMenuScreens({navigation}) {
       <Stack.Screen name="ProductList" component={ProductList} />
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="Address" component={Address} />
+    </Stack.Navigator>
+  );
+}
+
+function addressStack({navigation}) {
+  return (
+    <Stack.Navigator initialRouteName={'Address'}>
+      <Stack.Screen
+        name="Address"
+        component={Address}
+        options={{
+          title: 'Address',
+          headerStyle: {
+            //backgroundColor: '#f4511e',
+          },
+          headerTintColor: COLORS.lightGray,
+          headerTitleStyle: {
+            ...FONTS.navTitle,
+          },
+          headerLeft: ({onPress}) => (
+            <TouchableOpacity
+              style={{marginLeft: SIZES.padding}}
+              onPress={() => navigation.back()}>
+              <Image
+                source={icons.arrow_back}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                }}
+              />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -122,6 +159,7 @@ function stackProductListScreen({navigation}) {
       <Stack.Screen name="Category" component={Category} />
       <Stack.Screen name="Product" component={Product} />
       <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="Address" component={Address} />
     </Stack.Navigator>
   );
 }
@@ -133,7 +171,7 @@ function stackScreens({navigation}) {
         name="Home"
         component={Home}
         options={{
-          title: 'TRENDY ZONE',
+          title: 'JUST CLIQ',
           headerStyle: {
             //backgroundColor: '#f4511e',
           },
@@ -199,6 +237,12 @@ const App = () => {
           name="HomePage"
           options={{drawerLabel: 'Home'}}
           component={stackScreens}
+        />
+
+        <Drawer.Screen
+          name="Address"
+          options={{drawerLabel: 'Address'}}
+          component={addressStack}
         />
 
         <Drawer.Screen

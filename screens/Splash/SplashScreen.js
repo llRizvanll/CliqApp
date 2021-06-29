@@ -25,7 +25,7 @@ class Splashscreen extends React.Component {
               alignContent: 'center',
               alignSelf: 'center',
             }}></Image>
-          <Text style={styles.text}>CLIQ APP</Text>
+          <Text style={styles.text}>JUST CLIQ</Text>
         </ImageBackground>
       </View>
     );
