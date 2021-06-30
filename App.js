@@ -107,7 +107,7 @@ function addressStack({navigation}) {
           headerLeft: ({onPress}) => (
             <TouchableOpacity
               style={{marginLeft: SIZES.padding}}
-              onPress={() => navigation.back()}>
+              onPress={() => navigation.navigate('Home', {})}>
               <Image
                 source={icons.arrow_back}
                 resizeMode="contain"

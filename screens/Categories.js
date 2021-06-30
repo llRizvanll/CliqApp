@@ -69,8 +69,10 @@ const Category = ({navigation}) => {
           <View style={{flex: 1, alignItems: 'flex-start'}}>
             <Text
               style={{
-                color: COLORS.gray,
+                color: '#212121',
+                height:40,
                 ...FONTS.cat_title_text,
+                textDecorationColor:'#212121'
               }}>
               {item.name}
             </Text>
