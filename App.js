@@ -24,6 +24,7 @@ import ProductList from './screens/ProductList';
 import Cart from './screens/Cart';
 import Splashscreen from './screens/Splash/SplashScreen';
 import Address from './screens/Forms/Address';
+import Login from "./screens/Forms/Login";
 
 const theme = {
   ...DefaultTheme,
@@ -118,6 +119,27 @@ function addressStack({navigation}) {
               />
             </TouchableOpacity>
           ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function loginStack({navigation}) {
+  return (
+    <Stack.Navigator initialRouteName={'Login'}>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: 'Login',
+          headerStyle: {
+            //backgroundColor: '#f4511e',
+          },
+          headerTintColor: COLORS.lightGray,
+          headerTitleStyle: {
+            ...FONTS.navTitle,
+          },
         }}
       />
     </Stack.Navigator>
@@ -243,6 +265,11 @@ const App = () => {
           name="Address"
           options={{drawerLabel: 'Address'}}
           component={addressStack}
+        />
+        <Drawer.Screen
+          name="Login"
+          options={{drawerLabel: 'Login'}}
+          component={loginStack}
         />
 
         <Drawer.Screen
