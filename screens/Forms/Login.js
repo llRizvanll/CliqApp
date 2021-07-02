@@ -72,7 +72,6 @@ const Login = ({navigation}) => {
           </View>
           <Text style={{...FONTS.big_button_text, marginLeft:0,alignSelf:'center', color:'#0077b6'}}>Resend OTP</Text>
         </ScrollView>
-
       </View>
       <View style={styles.submit_btn_container}>
         <TouchableOpacity onPress={onSubmit}>
