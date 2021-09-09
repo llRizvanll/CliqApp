@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -8,83 +8,11 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {COLORS, SIZES, FONTS, icons} from '../constants';
+import { COLORS, FONTS, icons } from '../constants';
+import { ProductsDummyData } from '../src/data';
 
-const ProductList = ({navigation}) => {
-  const [product_list, setProductList] = React.useState([
-    {
-      id: 0,
-      name: 'Rangriti Blue Printed A-Line Dress',
-      price: 1079,
-      brand_name: 'Rangriti',
-      offer: '40% Off',
-      img: 'https://img.tatacliq.com/images/i6/437Wx649H/MP000000007288363_437Wx649H_20200716044236.jpeg',
-      type: 'women',
-    },
-    {
-      id: 1,
-      name: 'GAP Purple Full Length Shirt Dress',
-      price: 2098,
-      brand_name: 'GAP',
-      offer: '45% Off',
-      img: 'https://img.tatacliq.com/images/i7/437Wx649H/MP000000009096587_437Wx649H_202103170225581.jpeg',
-      type: 'women',
-    },
-    {
-      id: 2,
-      name: 'PlusS Mustard Floral Print Dress',
-      price: 809,
-      brand_name: 'PlusS',
-      offer: '70% Off',
-      img: 'https://img.tatacliq.com/images/i6/437Wx649H/MP000000005559578_437Wx649H_20200122195119.jpeg',
-      type: 'women',
-    },
-    {
-      id: 3,
-      name: 'PlusS Yellow Printed Below Knee Dress',
-      price: 689,
-      brand_name: 'PlusS',
-      offer: '70% Off',
-      img: 'https://img.tatacliq.com/images/i3/437Wx649H/MP000000004774937_437Wx649H_20190512205828.jpeg',
-      type: 'women',
-    },
-    {
-      id: 4,
-      name: 'Rangriti Blue Printed A-Line Dress',
-      price: 1079,
-      brand_name: 'Rangriti',
-      offer: '40% Off',
-      img: 'https://img.tatacliq.com/images/i6/437Wx649H/MP000000007288363_437Wx649H_20200716044236.jpeg',
-      type: 'women',
-    },
-    {
-      id: 5,
-      name: 'GAP Purple Full Length Shirt Dress',
-      price: 2098,
-      brand_name: 'GAP',
-      offer: '45% Off',
-      img: 'https://img.tatacliq.com/images/i7/437Wx649H/MP000000009096587_437Wx649H_202103170225581.jpeg',
-      type: 'women',
-    },
-    {
-      id: 6,
-      name: 'PlusS Mustard Floral Print Dress',
-      price: 809,
-      brand_name: 'PlusS',
-      offer: '70% Off',
-      img: 'https://img.tatacliq.com/images/i6/437Wx649H/MP000000005559578_437Wx649H_20200122195119.jpeg',
-      type: 'women',
-    },
-    {
-      id: 7,
-      name: 'PlusS Yellow Printed Below Knee Dress',
-      price: 689,
-      brand_name: 'PlusS',
-      offer: '70% Off',
-      img: 'https://img.tatacliq.com/images/i3/437Wx649H/MP000000004774937_437Wx649H_20190512205828.jpeg',
-      type: 'women',
-    },
-  ]);
+const ProductList = ({ navigation }) => {
+  const [product_list, setProductList] = React.useState(ProductsDummyData);
   function renderProductList(item, index) {
     return (
       <View
@@ -113,7 +41,7 @@ const ProductList = ({navigation}) => {
               alignContent: 'center',
               height: '100%',
             }}>
-            <View style={{zIndex: 20, position: 'absolute'}}>
+            <View style={{ zIndex: 20, position: 'absolute' }}>
               <Image
                 resizeMode="contain"
                 source={icons.discount_tag}
@@ -137,11 +65,11 @@ const ProductList = ({navigation}) => {
               </Text>
             </View>
             <View
-              style={{flex: 7, backgroundColor: COLORS.white, marginBottom: 4}}>
+              style={{ flex: 7, backgroundColor: COLORS.white, marginBottom: 4 }}>
               <Image
                 resizeMode="contain"
-                source={{uri: item.img}}
-                style={{height: 240, width: '100%'}}
+                source={{ uri: item.img }}
+                style={{ height: 240, width: '100%' }}
               />
             </View>
             <View
@@ -159,7 +87,7 @@ const ProductList = ({navigation}) => {
                 {item.brand_name}
               </Text>
               <Text
-                style={{color: COLORS.black, ...FONTS.prod_list_title_text}}>
+                style={{ color: COLORS.black, ...FONTS.prod_list_title_text }}>
                 {item.name}
               </Text>
 
@@ -183,7 +111,7 @@ const ProductList = ({navigation}) => {
         data={product_list}
         numColumns={2}
         keyExtractor={item => item.id.toString()}
-        renderItem={({item, index}) => renderProductList(item, index)}
+        renderItem={({ item, index }) => renderProductList(item, index)}
       />
     </View>
   );
