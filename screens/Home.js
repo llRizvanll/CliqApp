@@ -13,11 +13,14 @@ import {
     Polygon,
 } from 'react-native-svg';
 import { TrendingDummyData } from '../src/data';
+import { useNavigation } from '@react-navigation/native'
 
 import { icons, COLORS, FONTS, SIZES } from '../constants';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const Home = ({ navigation }) => {
+const Home = () => {
+
+    const navigation = useNavigation()
 
     const [showAddToBagModal, setShowAddToBagModal] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState(null);
@@ -33,8 +36,8 @@ const Home = ({ navigation }) => {
     // Render
     async function fetchClothesList() {
         var settings = {
-            'method': 'GET',
-            'headers': {
+            method: 'GET',
+            headers: {
                 'cache-control': 'no-cache',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -57,8 +60,8 @@ const Home = ({ navigation }) => {
 
     async function fetchAvailClothesList() {
         var settings = {
-            'method': 'GET',
-            'headers': {
+            method: 'GET',
+            headers: {
                 'cache-control': 'no-cache',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -338,51 +341,6 @@ const Home = ({ navigation }) => {
                 </View>
 
             </ScrollView>
-            <View style={{
-                ...FONTS.home_menu_box_shadow, height: 60,
-                display: 'flex', position: 'absolute',
-                padding: 10, width: '100%',
-                bottom: 0, backgroundColor: COLORS.white,
-                flexDirection: 'row', justifyContent: 'space-between'
-            }}>
-
-                <TouchableOpacity
-                    onPress={() => {
-                    }}
-                >
-                    <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                        <Image source={icons.home_btm_menu} resizeMode="contain" style={{ height: 24, width: 24 }} />
-                        <Text style={{ color: COLORS.black, ...FONTS.home_btm_text }}> Home</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => {
-                        navigation.navigate('Category', {});
-                    }}
-                >
-                    <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                        <Image source={icons.cat_btm_menu} resizeMode="contain" style={{ height: 24, width: 24 }} />
-                        <Text style={{ color: COLORS.black, ...FONTS.home_btm_text }}> Categories</Text>
-                    </View>
-                </TouchableOpacity>
-
-
-
-                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                    <Image source={icons.brand_btm_menu} resizeMode="contain" style={{ height: 24, width: 24 }} />
-                    <Text style={{ color: COLORS.black, ...FONTS.home_btm_text }}> Brand</Text>
-                </View>
-                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                    <Image source={icons.account_btm_menu} resizeMode="contain" style={{ height: 24, width: 24 }} />
-                    <Text style={{ color: COLORS.black, ...FONTS.home_btm_text }}> Account</Text>
-                </View>
-                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                    <Image source={icons.bag_btm_menu} resizeMode="contain" style={{ height: 24, width: 24 }} />
-                    <Text style={{ color: COLORS.black, ...FONTS.home_btm_text }}> My Bag</Text>
-                </View>
-
-            </View>
         </View>
     );
 };
