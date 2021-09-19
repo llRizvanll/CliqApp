@@ -7,10 +7,10 @@ const ClothesContext = React.createContext()
 const ClothesProvider = (props) => {
 
     // Dummy Data
-    const [trending, setTrending] = React.useState(TrendingDummyData);
+    const [trending, setTrending] = useState(TrendingDummyData);
 
     const [trendingClothes, setTrendingClothes] = useState([]);
-    const [recentlyViewed, setRecentlyViewed] = React.useState([]);
+    const [recentlyViewed, setRecentlyViewed] = useState([]);
 
     const fetchClothesList = async () => {
         const response = await fetch(API_CLOTHES, API_SETTING)

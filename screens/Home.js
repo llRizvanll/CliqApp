@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -25,9 +25,9 @@ const Home = () => {
     const appContext = useContext(ClothesContext)
     const { recentlyViewed, trending, trendingClothes } = appContext
 
-    const [showAddToBagModal, setShowAddToBagModal] = React.useState(false);
-    const [selectedItem, setSelectedItem] = React.useState(null);
-    const [selectedSize, setSelectedSize] = React.useState('');
+    const [showAddToBagModal, setShowAddToBagModal] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedSize, setSelectedSize] = useState('');
 
     function renderTrendingShoes(item, index) {
         var trendingStyle = {};
