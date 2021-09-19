@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
     StyleSheet,
     View,
@@ -12,73 +12,22 @@ import {
     Svg,
     Polygon,
 } from 'react-native-svg';
-import { TrendingDummyData } from '../src/data';
 import { useNavigation } from '@react-navigation/native'
 
-import { icons, COLORS, FONTS, SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../constants';
 import { ScrollView } from 'react-native-gesture-handler';
+
+import { ClothesContext } from '../src/context';
 
 const Home = () => {
 
     const navigation = useNavigation()
+    const appContext = useContext(ClothesContext)
+    const { recentlyViewed, trending, trendingClothes } = appContext
 
     const [showAddToBagModal, setShowAddToBagModal] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState(null);
     const [selectedSize, setSelectedSize] = React.useState('');
-
-
-    // Dummy Data
-    const [trending, setTrending] = React.useState(TrendingDummyData);
-
-    const [trending_clothes, setTrendingClothes] = React.useState([]);
-    const [recentlyViewed, setRecentlyViewed] = React.useState([]);
-
-    // Render
-    async function fetchClothesList() {
-        var settings = {
-            method: 'GET',
-            headers: {
-                'cache-control': 'no-cache',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        };
-        const response = await fetch('https://api.npoint.io/968ab3964e88978f2d51', settings)
-            .then((response) => response.json())
-            .catch((error) => {
-                console.error(error);
-            });
-        setTrendingClothes(response);
-        console.log('data', JSON.stringify(response));
-    }
-
-    useEffect(() => {
-        if (trending_clothes.length <= 1) { fetchClothesList(); }
-
-    });
-
-
-    async function fetchAvailClothesList() {
-        var settings = {
-            method: 'GET',
-            headers: {
-                'cache-control': 'no-cache',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        };
-        const response = await fetch('https://api.npoint.io/68cb83657d7616957c3f', settings)
-            .then((response) => response.json())
-            .catch((error) => {
-                console.error(error);
-            });
-        setRecentlyViewed(response);
-        console.log('all-data', JSON.stringify(response));
-    }
-
-    useEffect(() => {
-        if (recentlyViewed.length <= 1) { fetchAvailClothesList(); }
-    });
 
     function renderTrendingShoes(item, index) {
         var trendingStyle = {};
@@ -300,7 +249,7 @@ const Home = () => {
                         <FlatList
                             horizontal
                             showsHorizontalScrollIndicator={false}
-                            data={trending_clothes}
+                            data={trendingClothes}
                             keyExtractor={item => item.id.toString()}
                             renderItem={({ item, index }) => renderLatestClothesTrendingItems(item, index)}
                         />
