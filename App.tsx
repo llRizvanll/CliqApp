@@ -10,8 +10,9 @@ import React from 'react';
 import { LogBox } from 'react-native';
 import AppNavigator from './navigations/AppNavigator';
 import { ClothesProvider } from './src/context';
+import { React$Node } from './src/types/AppTypes';
 
-const App = () => {
+const App: () => React$Node = () => {
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs(); //Ignore all log notifications
   return (

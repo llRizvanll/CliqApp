@@ -1,10 +1,11 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { icons, COLORS, FONTS, SIZES } from '../constants';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { HomeStackParamList, HomeBottmTabParamList } from '../src/types/NavigationTypes';
 // screens
 import { Home } from '../screens/';
 import Cart from '../screens/Cart';
@@ -13,15 +14,14 @@ import Product from '../screens/Detail';
 import ProductList from '../screens/ProductList';
 import Splashscreen from '../screens/Splash/SplashScreen';
 
-const Stack = createStackNavigator()
-const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator<HomeStackParamList>()
+const Tab = createBottomTabNavigator<HomeBottmTabParamList>()
 
 function HomeTabs() {
     return (
         <Tab.Navigator initialRouteName="Home"
             tabBarOptions={{
-                tabBarLabel: { ...FONTS.home_btm_text },
-                style: { paddingBottom: 5, paddingTop: 5 },
+                labelStyle: { ...FONTS.home_btm_text },
                 inactiveTintColor: COLORS.black,
                 activeTintColor: COLORS.light2,
             }}>
@@ -68,7 +68,7 @@ function HomeTabs() {
                     )
                 }} />
             <Tab.Screen
-                name="My Bag"
+                name="MyBag"
                 component={Home}
                 listeners={{
                     tabPress: e => {
@@ -76,6 +76,7 @@ function HomeTabs() {
                     }
                 }}
                 options={{
+                    title: 'My Bag',
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="shopping-outline" color={color} size={size} />
                     )
@@ -85,9 +86,9 @@ function HomeTabs() {
 }
 
 export default function HomeNavigator() {
-    const navigation = useNavigation()
+    const navigation = useNavigation<StackNavigationProp<HomeStackParamList>>()
     return (
-        <Stack.Navigator initialRouteName={'Splashscreen'}>
+        <Stack.Navigator initialRouteName="Splashscreen">
             <Stack.Screen
                 name="Home"
                 component={HomeTabs}
@@ -98,12 +99,12 @@ export default function HomeNavigator() {
                     },
                     headerTintColor: COLORS.lightGray,
                     headerTitleStyle: {
-                        ...FONTS.navTitle,
+                        ...FONTS.navTitle
                     },
                     headerLeft: ({ onPress }) => (
                         <TouchableOpacity
                             style={{ marginLeft: SIZES.padding }}
-                            onPress={() => navigation.openDrawer()}>
+                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
                             <Image
                                 source={icons.menu}
                                 resizeMode="contain"

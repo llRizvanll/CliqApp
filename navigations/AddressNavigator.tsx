@@ -1,15 +1,16 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { icons, COLORS, FONTS, SIZES } from '../constants';
+import { AddressStackParamList } from '../src/types/NavigationTypes';
 //screens
 import Address from '../screens/Forms/Address';
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<AddressStackParamList>()
 
 export default function AddressNavigator() {
-    const navigation = useNavigation()
+    const navigation = useNavigation<StackNavigationProp<AddressStackParamList>>()
     return (
         <Stack.Navigator initialRouteName={'Address'}>
             <Stack.Screen
@@ -27,7 +28,7 @@ export default function AddressNavigator() {
                     headerLeft: ({ onPress }) => (
                         <TouchableOpacity
                             style={{ marginLeft: SIZES.padding }}
-                            onPress={() => navigation.navigate('Home', {})}>
+                            onPress={() => navigation.navigate('Home')}>
                             <Image
                                 source={icons.arrow_back}
                                 resizeMode="contain"

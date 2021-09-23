@@ -1,5 +1,5 @@
-import {Dimensions} from 'react-native';
-const {width, height} = Dimensions.get('window');
+import { Dimensions, TextStyle } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 export const COLORS = {
   // colors
@@ -12,7 +12,7 @@ export const COLORS = {
   cat_title_color: '#212121',
 };
 
-export const SIZES = {
+export const SIZES: { [key: string]: number } = {
   // global sizes
   base: 8,
   font: 14,
@@ -37,14 +37,15 @@ export const SIZES = {
   height,
 };
 
-export const FONTS = {
-  navTitle: {fontFamily: 'CarmenSans-Thin', fontSize: SIZES.navTitle},
-  largeTitleBold: {fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h2},
-  h1: {fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h1, lineHeight: 36},
-  h2: {fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h2, lineHeight: 30},
-  h3: {fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h3, lineHeight: 22},
-  h4: {fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h4, lineHeight: 22},
-  h5: {fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h5, lineHeight: 22},
+export const FONTS: { [key: string]: TextStyle } = {
+  // export const FONTS = {
+  navTitle: { fontFamily: 'CarmenSans-Thin', fontSize: SIZES.navTitle },
+  largeTitleBold: { fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h2 },
+  h1: { fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h1, lineHeight: 36 },
+  h2: { fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h2, lineHeight: 30 },
+  h3: { fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h3, lineHeight: 22 },
+  h4: { fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h4, lineHeight: 22 },
+  h5: { fontFamily: 'CarmenSans-SemiBold', fontSize: SIZES.h5, lineHeight: 22 },
   body1: {
     fontFamily: 'CarmenSans-Regular',
     fontSize: SIZES.body1,
@@ -70,7 +71,7 @@ export const FONTS = {
     fontSize: SIZES.body5,
     lineHeight: 22,
   },
-  big_button_text: {fontFamily: 'Rubik-Regular', fontSize: 18, lineHeight: 60},
+  big_button_text: { fontFamily: 'Rubik-Regular', fontSize: 18, lineHeight: 60 },
   checkout_btn_text: {
     fontFamily: 'Rubik-Regular',
     fontSize: 24,
@@ -130,7 +131,7 @@ export const FONTS = {
   },
   box_shadow: {
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 15,
@@ -147,6 +148,6 @@ export const FONTS = {
   },
 };
 
-const appTheme = {COLORS, SIZES, FONTS};
+const appTheme = { COLORS, SIZES, FONTS };
 
 export default appTheme;

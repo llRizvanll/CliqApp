@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { AppDrawerParamList } from '../src/types/NavigationTypes';
 // navigators
 import AddressNavigator from './AddressNavigator';
 import HomeNavigator from './HomeNavigator';
@@ -16,7 +17,7 @@ const theme = {
     },
 };
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<AppDrawerParamList>();
 
 export default function AppNavigator() {
     return (
@@ -42,16 +43,16 @@ export default function AppNavigator() {
                     component={LoginNavigator}
                 />
                 <Drawer.Screen
-                    name="FirstSideMenuItem"
+                    name="ProductList"
                     options={{ drawerLabel: 'Products' }}
                     component={ProductListNavigator}
                 />
                 <Drawer.Screen
-                    name="FirstSideCMenuItem"
+                    name="Categories"
                     options={{ drawerLabel: 'Categories' }}
                     component={MenuNavigator}
                 />
-                <Drawer.Screen
+                {/* <Drawer.Screen
                     name="SecondSideMenuItem"
                     options={{ drawerLabel: 'Account' }}
                     component={HomeNavigator}
@@ -65,7 +66,7 @@ export default function AppNavigator() {
                     name="FourthSideMenuItem"
                     options={{ drawerLabel: 'Call US' }}
                     component={HomeNavigator}
-                />
+                /> */}
             </Drawer.Navigator>
         </NavigationContainer>
     );
