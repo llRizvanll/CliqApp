@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { TrendingDummyData } from '../data'
 import { API_CLOTHES, API_AVAILABLE_CLOTHES, API_SETTING } from '../../constants'
+import { TrendingType } from '../types/DataTypes'
 
-const ClothesContext = React.createContext()
+const ClothesContext = React.createContext({})
 
-const ClothesProvider = (props) => {
+const ClothesProvider: React.FC = (props) => {
 
     // Dummy Data
-    const [trending, setTrending] = useState(TrendingDummyData);
+    const [trending, setTrending] = useState<TrendingType[]>(TrendingDummyData);
 
-    const [trendingClothes, setTrendingClothes] = useState([]);
-    const [recentlyViewed, setRecentlyViewed] = useState([]);
+    const [trendingClothes, setTrendingClothes] = useState<TrendingType[]>([]);
+    const [recentlyViewed, setRecentlyViewed] = useState<TrendingType[]>([]);
 
     const fetchClothesList = async () => {
         const response = await fetch(API_CLOTHES, API_SETTING)
